@@ -4,6 +4,9 @@ import re
 
 
 def get_files_by_extension(root, extension):
+    '''
+    Finds all files with the input extension in the root folder
+    '''
     pattern = f"*.{extension}"
     result = []
 
@@ -16,10 +19,14 @@ def get_files_by_extension(root, extension):
 
 
 def get_classes_in_css(path):
+    '''
+    Given a CSS or SCSS file path, it gives back a list of all css in the file
+    '''
     with open(path) as f: 
         content = f.read()
 
-    regex = re.compile(r'\.([a-z][a-z0-9]*) {|\.([a-z][a-z0-9]*)(-[a-z0-9]+) {|([a-z][a-z0-9]*)(__[a-z0-9]+) {')
+    CSS_SELECTOR_REGEX = r'\.([a-z][a-z0-9]*) {|\.([a-z][a-z0-9]*)(-[a-z0-9]+) {|([a-z][a-z0-9]*)(__[a-z0-9]+) {'
+    regex = re.compile(CSS_SELECTOR_REGEX)
     matches = regex.findall(content)
 
     result = []
