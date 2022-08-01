@@ -15,7 +15,7 @@ def get_files_by_extension(root, extension):
             if fnmatch(name, pattern):
                 result.append(os.path.join(path, name))
     
-    return result
+    return tuple(result)
 
 
 def get_classes_in_css(path):
@@ -36,4 +36,4 @@ def get_classes_in_css(path):
             if element not in result: 
                 result.append(element)
     
-    return result
+    return tuple(result)

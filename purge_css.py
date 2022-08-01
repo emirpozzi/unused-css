@@ -2,9 +2,6 @@ from lib.functions import get_files_by_extension, get_classes_in_css
 from lib.console import CONSOLE_BLUE, CONSOLE_ENDCOLOR, CONSOLE_GREEN
 import os
 
-# TODO build output string so that files with multiple unused classes get printed out once as:
-# /User/foo - Unused: container, flex-container, bold
-
 def main():
     '''
     - get all html files in any directory
@@ -21,6 +18,7 @@ def main():
     class_list = { file : get_classes_in_css(file) for file in style_files }
 
     count = 0
+    unused_classes = {}
     for style_file in style_files:
         file_without_extension, _ = os.path.splitext(style_file)
         html_file = file_without_extension + ".html"
@@ -31,11 +29,16 @@ def main():
         except:
             continue
             
+        unused_classes[style_file] = ''
         for css_class in class_list[style_file]:
             if css_class not in html_content:
                 count = count + 1
-                print(style_file)
-                print(CONSOLE_BLUE, f"Not used: {css_class}", CONSOLE_ENDCOLOR, '\n')
+                unused_classes[style_file] += f" {css_class}"
+
+    for file in unused_classes.keys():
+        if unused_classes[file]:
+            print(file)
+            print(CONSOLE_BLUE, f"Not used:{unused_classes[file]}", CONSOLE_ENDCOLOR, '\n')
 
     print(CONSOLE_GREEN, f"Unused CSS classes: {count}")
     
