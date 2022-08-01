@@ -13,19 +13,17 @@ def main():
     - for each html file search if any css class is not used
     '''
     root_path = os.getcwd()
-    style_type_extension = "scss"
 
-    file_list = get_files_by_extension(root_path, style_type_extension)
+    file_list_scss = get_files_by_extension(root_path, 'scss')
+    file_list_css = get_files_by_extension(root_path, 'css')
+    style_files = file_list_scss + file_list_css
 
-    class_list = {}
-    for style_file in file_list:
-        classes = get_classes_in_css(style_file)
-        class_list[style_file] = classes
+    class_list = { file : get_classes_in_css(file) for file in style_files }
 
     count = 0
-    for style_file in file_list:
-        file_name, _ = os.path.splitext(style_file)
-        html_file = file_name + ".html"
+    for style_file in style_files:
+        file_without_extension, _ = os.path.splitext(style_file)
+        html_file = file_without_extension + ".html"
 
         try:
             with open(html_file) as f: 
