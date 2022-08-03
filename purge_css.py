@@ -26,7 +26,8 @@ def main():
         try:
             with open(html_file) as f: 
                 html_content = f.read()
-        except:
+        except Exception:
+            # The style sheet is not for a component (ex. global, scss module...)
             continue
             
         unused_classes[style_file] = ''
