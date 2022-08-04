@@ -41,7 +41,10 @@ def main():
             print(file)
             print(CONSOLE_BLUE, f"Not used:{unused_classes[file]}", CONSOLE_ENDCOLOR, '\n')
 
-    print(CONSOLE_GREEN, f"Unused CSS classes: {count}")
+    if(count):
+        print(CONSOLE_GREEN, f"Unused CSS classes: {count}")
+    else:
+        print(CONSOLE_GREEN, "No unused CSS classes found")
     
 
 if __name__ == "__main__":
