@@ -1,16 +1,11 @@
-from fnmatch import fnmatch
-from lib.functions import get_files_by_extension, get_classes_in_css
-from lib.console import CONSOLE_BLUE, CONSOLE_ENDCOLOR, CONSOLE_GREEN
+from lib.functions import get_files_by_extension, get_classes_in_css, is_not_component, is_source_file
+from lib.console import print_number_unused, print_unused_classes, CONSOLE_BLUE, CONSOLE_ENDCOLOR, CONSOLE_GREEN
 import os
 
-def is_not_component(file_name):
-    pattern = "*.component.*"
-    return not fnmatch(file_name, pattern)
-
-def is_source_file(file_name):
-    return ("/node_modules/" not in file_name ) and ("/dist/" not in file_name)
-
 def main():
+    '''
+    Get unused classes in all modules and global style sheets
+    '''
     root_path = os.getcwd()
 
     file_list_scss = get_files_by_extension(root_path, 'scss')
@@ -41,12 +36,9 @@ def main():
     for file in unused_classes.keys():
         if unused_classes[file]:
             print(file)
-            print(CONSOLE_BLUE, f"Not used:{unused_classes[file]}", CONSOLE_ENDCOLOR, '\n')
+            print_unused_classes(unused_classes[file])
 
-    if(count):
-        print(CONSOLE_GREEN, f"Unused CSS classes: {count}")
-    else:
-        print(CONSOLE_GREEN, "No unused CSS classes found")
+    print_number_unused(count)
 
 
 if __name__ == "__main__":
