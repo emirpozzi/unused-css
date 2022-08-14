@@ -1,13 +1,10 @@
 from lib.functions import get_files_by_extension, get_classes_in_css
-from lib.console import CONSOLE_BLUE, CONSOLE_ENDCOLOR, CONSOLE_GREEN
+from lib.console import print_number_unused, print_unused_classes, CONSOLE_BLUE, CONSOLE_ENDCOLOR, CONSOLE_GREEN
 import os
 
 def main():
     '''
-    - get all html files in any directory
-    - for each file, get all unique css classes and save result
-    - for each file, in same folder find html file with same name
-    - for each html file search if any css class is not used
+    Get unused classes in all components stylesheet
     '''
     root_path = os.getcwd()
 
@@ -39,12 +36,9 @@ def main():
     for file in unused_classes.keys():
         if unused_classes[file]:
             print(file)
-            print(CONSOLE_BLUE, f"Not used:{unused_classes[file]}", CONSOLE_ENDCOLOR, '\n')
+            print_unused_classes(unused_classes[file])
 
-    if(count):
-        print(CONSOLE_GREEN, f"Unused CSS classes: {count}")
-    else:
-        print(CONSOLE_GREEN, "No unused CSS classes found")
+    print_number_unused(count)
     
 
 if __name__ == "__main__":

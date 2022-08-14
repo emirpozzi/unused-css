@@ -37,3 +37,24 @@ def get_classes_in_css(path):
                 result.append(element)
     
     return tuple(result)
+
+
+def merge_files_content(file_list):
+    result = ''
+    for file in file_list: 
+        try:
+            with open(file) as f:
+                content = f.read()
+            result = result + content
+        except Exception:
+            continue
+    return result
+
+
+def is_not_component(file_name):
+    pattern = "*.component.*"
+    return not fnmatch(file_name, pattern)
+
+
+def is_source_file(file_name):
+    return ("/node_modules/" not in file_name ) and ("/dist/" not in file_name)
