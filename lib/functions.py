@@ -39,6 +39,18 @@ def get_classes_in_css(path):
     return tuple(result)
 
 
+def merge_files_content(file_list):
+    result = ''
+    for file in file_list: 
+        try:
+            with open(file) as f:
+                content = f.read()
+            result = result + content
+        except Exception:
+            continue
+    return result
+
+
 def is_not_component(file_name):
     pattern = "*.component.*"
     return not fnmatch(file_name, pattern)

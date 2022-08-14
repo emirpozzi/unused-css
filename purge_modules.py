@@ -1,4 +1,4 @@
-from lib.functions import get_files_by_extension, get_classes_in_css, is_not_component, is_source_file
+from lib.functions import get_files_by_extension, get_classes_in_css, is_not_component, is_source_file, merge_files_content
 from lib.console import print_number_unused, print_unused_classes, CONSOLE_BLUE, CONSOLE_ENDCOLOR, CONSOLE_GREEN
 import os
 
@@ -16,12 +16,8 @@ def main():
 
     modules_global_scss = tuple(filter(is_not_component, cleaned_css))
 
-    all_html = ""
-    for file in cleaned_html: 
-        with open(file) as f: 
-            content = f.read()
-        all_html = all_html + content
-    
+    all_html = merge_files_content(cleaned_html)
+   
     count = 0
     unused_classes = {}
     class_list = { file : get_classes_in_css(file) for file in modules_global_scss }
