@@ -51,9 +51,9 @@ def merge_files_content(file_list):
     return result
 
 
-def is_not_component(file_name):
+def is_component(file_name):
     pattern = "*.component.*"
-    return not fnmatch(file_name, pattern)
+    return fnmatch(file_name, pattern)
 
 
 def is_source_file(file_name):

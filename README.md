@@ -12,9 +12,3 @@ To run navigate to the Angular project `src` folder and run:
 ```
 python3 <abs-path-to-script-folder>/purge_css.py
 ```
-
-To find unused css outside component style files such as Sass partial files and index.css run:
-
-```
-python3 <abs-path-to-script-folder>/purge_modules.py
-```
