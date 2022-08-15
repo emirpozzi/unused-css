@@ -2,8 +2,7 @@ from fnmatch import fnmatch
 import os
 import re
 
-
-def get_files_by_extension(root, extension):
+def get_files_by_extension(root, extension) -> tuple:
     '''
     Finds all files with the input extension in the root folder
     '''
@@ -17,8 +16,7 @@ def get_files_by_extension(root, extension):
     
     return tuple(result)
 
-
-def get_classes_in_css(path):
+def get_classes_in_css(path) -> tuple:
     '''
     Given a CSS or SCSS file path, it gives back a list of all css in the file
     '''
@@ -38,8 +36,10 @@ def get_classes_in_css(path):
     
     return tuple(result)
 
-
-def merge_files_content(file_list):
+def merge_files_content(file_list) -> str:
+    '''
+    Given a list of files path, gets all content of all files and returns a string
+    '''
     result = ''
     for file in file_list: 
         try:
@@ -50,11 +50,15 @@ def merge_files_content(file_list):
             continue
     return result
 
-
-def is_component(file_name):
+def is_component(file_name) -> bool:
+    '''
+    File path is for an Angular component file
+    '''
     pattern = "*.component.*"
     return fnmatch(file_name, pattern)
 
-
-def is_source_file(file_name):
+def is_source_file(file_name) -> bool:
+    '''
+    File path is for a file in nodemodules/ and dist/
+    '''
     return ("/node_modules/" not in file_name ) and ("/dist/" not in file_name)
