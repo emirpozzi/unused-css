@@ -1,11 +1,20 @@
 # Purge CSS CLI for Angular
 
-Remove unused CSS and Sass classes in your stylesheets.
+Remove unused CSS and Sass classes from your Angular project.
 
-This is a simple python script that goes through all stylesheets in a project, finds CSS classes and verifies if they are used in the respective component .ts file.
+Purge CSS for Angular finds unused CSS classes in your `.component.css` and `.component.scss` files.
+It also checks if there unused classes in Sass partials and global stylesheets (`_foo.scss, index.css` etc.)
 
-The CLI outputs a list of the unused CSS classes and it does not modify anyfile. To run navigate to the Angular project `src` folder and run:
+The CLI outputs a list of the unused CSS classes and it **does not** modify anyfile.
+
+To run navigate to the Angular project `src` folder and run:
 
 ```
 python3 <abs-path-to-script-folder>/purge_css.py
+```
+
+To find unused css outside component style files such as Sass partial files and index.css run:
+
+```
+python3 <abs-path-to-script-folder>/purge_modules.py
 ```
