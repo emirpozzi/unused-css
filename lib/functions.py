@@ -23,14 +23,14 @@ def get_classes_in_css(path) -> tuple:
     with open(path) as f: 
         content = f.read()
 
-    CSS_SELECTOR_REGEX = r'\.([a-z][a-z0-9]*) {|\.([a-z][a-z0-9]*)(-[a-z0-9]+) {|([a-z][a-z0-9]*)(__[a-z0-9]+) {'
+    CSS_SELECTOR_REGEX = r'\.-?[_a-zA-Z]+[_a-zA-Z0-9-]*\s*\{'
     regex = re.compile(CSS_SELECTOR_REGEX)
     matches = regex.findall(content)
 
     result = []
     if matches:
         for match in matches:
-            element = ''.join(match)
+            element = match[1:-2]
             if element not in result: 
                 result.append(element)
     
