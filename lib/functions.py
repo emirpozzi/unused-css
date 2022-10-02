@@ -2,7 +2,9 @@ from fnmatch import fnmatch
 import os
 import re
 
-def get_files_by_extension(root, extension) -> tuple:
+CSS_SELECTOR_REGEX = r'\.-?[_a-zA-Z]+[_a-zA-Z0-9-]*\s*\{'
+
+def get_files_by_extension(root : str, extension : str) -> tuple:
     '''
     Finds all files with the input extension in the root folder
     '''
@@ -16,14 +18,13 @@ def get_files_by_extension(root, extension) -> tuple:
     
     return tuple(result)
 
-def get_classes_in_css(path) -> tuple:
+def get_classes_in_css(path : str) -> tuple:
     '''
     Given a CSS or SCSS file path, it gives back a list of all css in the file
     '''
     with open(path) as f: 
         content = f.read()
 
-    CSS_SELECTOR_REGEX = r'\.-?[_a-zA-Z]+[_a-zA-Z0-9-]*\s*\{'
     regex = re.compile(CSS_SELECTOR_REGEX)
     matches = regex.findall(content)
 
@@ -36,7 +37,7 @@ def get_classes_in_css(path) -> tuple:
     
     return tuple(result)
 
-def merge_files_content(file_list) -> str:
+def merge_files_content(file_list : list) -> str:
     '''
     Given a list of files path, gets all content of all files and returns a string
     '''
@@ -50,15 +51,15 @@ def merge_files_content(file_list) -> str:
             continue
     return result
 
-def is_component(file_name) -> bool:
+def is_component(file_name : str) -> bool:
     '''
     File path is for an Angular component file
     '''
     pattern = "*.component.*"
     return fnmatch(file_name, pattern)
 
-def is_source_file(file_name) -> bool:
+def is_source_file(file_name : str) -> bool:
     '''
-    File path is for a file in nodemodules/ and dist/
+    File is source file, not an artifact
     '''
-    return ("/node_modules/" not in file_name ) and ("/dist/" not in file_name)
+    return ("/node_modules/" not in file_name ) and ("/dist/" not in file_name) and ("/coverage/" not in file_name)
