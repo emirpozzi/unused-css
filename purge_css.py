@@ -1,6 +1,7 @@
 import os
-from lib.functions import get_files_by_extension, is_source_file, merge_files_content, get_unused_global_css, is_not_component, get_unused_component_css
+from lib.functions import get_files_by_extension, is_source_file, merge_files_content, is_not_component
 from lib.console import print_number_unused, print_all_unused_classes
+from lib.unused_css import get_unused_component_css, get_unused_global_css
 
 def main():
     '''
