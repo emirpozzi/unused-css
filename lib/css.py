@@ -1,5 +1,5 @@
 import re
-from lib.functions import CSS_SELECTOR_REGEX
+from lib.file import CSS_SELECTOR_REGEX
 
 def get_classes_in_css(path : str) -> tuple:
     '''

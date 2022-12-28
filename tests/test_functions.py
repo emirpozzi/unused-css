@@ -1,5 +1,5 @@
 import pytest
-from lib.functions import is_component
+from lib.file import is_component
 
 @pytest.mark.parametrize('input', 
 ["src/components/test.component.html",

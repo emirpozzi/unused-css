@@ -1,6 +1,6 @@
 import os
 from lib.css import get_classes_in_css
-from lib.functions import get_files_by_extension, is_component, is_not_component, is_source_file, merge_files_content
+from lib.file import get_files_by_extension, is_component, is_not_component, is_source_file, merge_files_content
 
 def get_unused_global_css(style_files : tuple, html : str) -> tuple:
     """
