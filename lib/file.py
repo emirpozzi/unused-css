@@ -45,3 +45,8 @@ def is_source_file(file_name : str) -> bool:
     File is source file, not an artifact
     '''
     return ("/node_modules/" not in file_name ) and ("/dist/" not in file_name) and ("/coverage/" not in file_name)
+
+def is_react_component(file_name : str) -> bool:
+    return fnmatch(file_name, "*.jsx") | fnmatch(file_name, "*.tsx") | fnmatch(file_name, "*.module.*")
+
+is_not_react_component = lambda x: not is_react_component(x)

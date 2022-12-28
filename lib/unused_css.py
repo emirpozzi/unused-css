@@ -58,7 +58,7 @@ class UnusedCss:
         not_component_style_files = tuple(filter(is_not_component, source_code_style_files))
 
         all_html = merge_files_content(source_code_html)
-        self.get_unused_global_css(not_component_style_files, all_html )
+        self.get_unused_global_css(not_component_style_files, all_html)
         self.get_unused_component_css(source_code_style_files)
 
         return (self.files, self.count)

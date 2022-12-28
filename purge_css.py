@@ -1,6 +1,7 @@
 import os
 import sys
-from lib.console import print_all_unused_classes, print_number_unused
+from lib.console import print_all_unused_classes
+from lib.result import Result
 from lib.unused_css import UnusedCss
 
 def main():
@@ -16,7 +17,9 @@ def main():
     (files, count) = logic.get_unused_css()
 
     print_all_unused_classes(files)
-    print_number_unused(count)
+
+    result = Result(count)
+    print(result)
 
 if __name__ == "__main__":
     main()
