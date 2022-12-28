@@ -42,7 +42,7 @@ def get_unused_component_css(unused_classes : dict, source_code_style_files : tu
     
     return (unused_classes, count)
 
-def get_unused_css(path):
+def get_unused_css(path : str) -> tuple:
     file_list_scss = get_files_by_extension(path, 'scss')
     file_list_css = get_files_by_extension(path, 'css')
     file_list_html = get_files_by_extension(path, 'html')
@@ -57,6 +57,7 @@ def get_unused_css(path):
     all_html = merge_files_content(source_code_html)
     (unused_classes, count) = get_unused_global_css(not_component_style_files, all_html )
     (unused_classes, count) = get_unused_component_css(unused_classes, source_code_style_files, count)
+
+    return (unused_classes, count)
     
-    print_all_unused_classes(unused_classes)
-    print_number_unused(count)
+    

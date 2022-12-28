@@ -1,5 +1,6 @@
 import os
 import sys
+from lib.console import print_all_unused_classes, print_number_unused
 from lib.unused_css import get_unused_css
 
 def main():
@@ -12,7 +13,10 @@ def main():
     else:
         root_path = os.getcwd()
 
-    get_unused_css(root_path)
+    (unused_classes, count) = get_unused_css(root_path)
+
+    print_all_unused_classes(unused_classes)
+    print_number_unused(count)
 
 
 if __name__ == "__main__":
