@@ -31,15 +31,6 @@ def merge_files_content(file_list : list) -> str:
             continue
     return result
 
-def is_component(file_name : str) -> bool:
-    '''
-    File path is for an Angular component file
-    '''
-    pattern = "*.component.*"
-    return fnmatch(file_name, pattern)
-
-is_not_component = lambda x: not is_component(x)
-
 def is_source_file(file_name : str) -> bool:
     '''
     File is source file, not an artifact
