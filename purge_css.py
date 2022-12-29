@@ -1,5 +1,6 @@
 import os
 import sys
+from lib.angular import Angular
 from lib.console import print_all_unused_classes
 from lib.result import Result
 from lib.unused_css import UnusedCss
@@ -13,7 +14,7 @@ def main():
     else:
         root_path = os.getcwd()
 
-    logic = UnusedCss(root_path)
+    logic = UnusedCss(root_path, Angular())
     (files, count) = logic.get_unused_css()
 
     print_all_unused_classes(files)
