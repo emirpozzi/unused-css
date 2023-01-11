@@ -27,3 +27,5 @@ def test_is_component_recognizes_not_components(input):
 "src/app/test.module.css"])
 def test_is_component_recognizes_components(input):
     assert is_react_component(input)
+
+# TODO test other methods of Angular class

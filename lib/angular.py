@@ -5,6 +5,7 @@ import os
 class Angular:
     component_extension = "html"
   
+#   TODO have count as class state
     def get_unused_component_css(self, style_files, files, count) -> tuple:
         """
         Given a list of the content of global style sheets/Sass module files, it returns CSS classes unused in html
@@ -14,7 +15,7 @@ class Angular:
 
         for style_file in components_css:
             file_without_extension, _ = os.path.splitext(style_file)
-            html_file_path = file_without_extension + ".html"
+            html_file_path = file_without_extension + "." + self.component_extension
             try:
                 with open(html_file_path) as f: 
                     html_content = f.read()
@@ -35,6 +36,3 @@ class Angular:
         '''
         pattern = "*.component.*"
         return fnmatch(file_name, pattern)
-
-    def is_not_component(self, file_name : str) -> bool:
-        return not self.is_component(file_name)

@@ -31,13 +31,17 @@ class UnusedCss:
         
         style_files = file_list_scss + file_list_css
 
+        # TODO use list comprehension instead of filter??
         source_code_style_files = tuple(filter(is_source_file, style_files))
         source_code_html = tuple(filter(is_source_file, file_list_html))
 
-        not_component_style_files = tuple(filter(self.framework.is_not_component, source_code_style_files))
+        not_component_style_files = tuple(filter(self.is_not_component, source_code_style_files))
 
         all_html = merge_files_content(source_code_html)
         self.get_unused_global_css(not_component_style_files, all_html)
         (self.files, self.count) = self.framework.get_unused_component_css(source_code_style_files, self.files, self.count)
 
         return (self.files, self.count)
+    
+    def is_not_component(self, file_name : str):
+        return not self.framework.is_component(file_name)

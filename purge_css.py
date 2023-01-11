@@ -15,12 +15,10 @@ def main():
         root_path = os.getcwd()
 
     logic = UnusedCss(root_path, Angular())
-    (files, count) = logic.get_unused_css()
-
+    files, count = logic.get_unused_css()
+    
     print_all_unused_classes(files)
-
-    result = Result(count)
-    print(result)
+    print(Result(count))
 
 if __name__ == "__main__":
     main()
