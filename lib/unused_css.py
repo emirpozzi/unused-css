@@ -27,7 +27,8 @@ class UnusedCss:
         """
         file_list_scss = get_files_by_extension(self.path, 'scss')
         file_list_css = get_files_by_extension(self.path, 'css')
-        file_list_html = get_files_by_extension(self.path, self.framework.component_extension)
+
+        file_list_html = self.framework.get_component_files(self.path)
         
         style_files = file_list_scss + file_list_css
 
@@ -39,7 +40,7 @@ class UnusedCss:
 
         all_html = merge_files_content(source_code_html)
         self.get_unused_global_css(not_component_style_files, all_html)
-        (self.files, self.count) = self.framework.get_unused_component_css(source_code_style_files, self.files, self.count)
+        self.files, self.count = self.framework.get_unused_component_css(source_code_style_files, self.files, self.count)
 
         return (self.files, self.count)
     
