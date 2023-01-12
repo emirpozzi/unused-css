@@ -1,5 +1,6 @@
 import re
-from lib.file import CSS_SELECTOR_REGEX
+
+CSS_SELECTOR_REGEX = r'\.-?[_a-zA-Z]+[_a-zA-Z0-9-]*\s*\{'
 
 def get_classes_in_css(path : str) -> tuple:
     '''

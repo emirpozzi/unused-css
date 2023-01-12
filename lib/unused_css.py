@@ -32,7 +32,6 @@ class UnusedCss:
         
         style_files = file_list_scss + file_list_css
 
-        # TODO use list comprehension instead of filter??
         source_code_style_files = tuple(filter(is_source_file, style_files))
         source_code_html = tuple(filter(is_source_file, file_list_html))
 
