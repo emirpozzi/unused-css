@@ -17,7 +17,7 @@ def get_files_by_extension(folder: str, extension: str) -> tuple:
     return tuple(result)
 
 
-def merge_files_content(file_list: tuple) -> str:
+def merge_files_content(file_list: tuple[str]) -> str:
     '''
     Given a list of files path, gets all content of all files and returns a string
     '''

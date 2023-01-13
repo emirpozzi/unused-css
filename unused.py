@@ -6,6 +6,8 @@ from lib.result import Result
 from lib.unused_css import UnusedCss
 
 # TODO rename lib in src
+# TODO rename any purge to unusedCSS
+# TODO update README, not only Angular also React
 # TODO add in readme no packages needed to run?
 
 
