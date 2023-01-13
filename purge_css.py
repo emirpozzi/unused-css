@@ -1,9 +1,13 @@
 import os
 import sys
 from lib.angular import Angular
-from lib.console import print_all_unused_classes
+from lib.file_result import FileResult
 from lib.result import Result
 from lib.unused_css import UnusedCss
+
+# TODO rename lib in src
+# TODO add in readme no packages needed to run?
+
 
 def main():
     '''
@@ -14,11 +18,13 @@ def main():
     else:
         root_path = os.getcwd()
 
+    # TODO set up script to detect if project is Angular or React based on package.json
     logic = UnusedCss(root_path, Angular())
     files, count = logic.get_unused_css()
-    
-    print_all_unused_classes(files)
+
+    print(FileResult(files))
     print(Result(count))
+
 
 if __name__ == "__main__":
     main()

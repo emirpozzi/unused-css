@@ -1,35 +1,35 @@
-import pytest
 from lib.angular import Angular
 from lib.react import React
 from lib.unused_css import UnusedCss
 
-def test_get_unused_css_finds_correct_number_unused_classes():
-    sut = UnusedCss("./mock/angular", Angular())
 
-    _, count = sut.get_unused_css()
+def test_Angular_get_unused_css_finds_correct_number_unused_classes():
+    sut = UnusedCss("./tests/mock/angular", Angular())
 
-    assert count == 2
+    _, unused_classes = sut.get_unused_css()
 
-def test_get_unused_css_finds_correct_number_css_classes():
-    sut = UnusedCss("./mock/angular", Angular())
+    assert unused_classes == 2
 
-    unused_classes, _ = sut.get_unused_css()
 
-    assert len(unused_classes) == 4
+def test_Angular_get_unused_css_finds_correct_number_style_files():
+    sut = UnusedCss("./tests/mock/angular", Angular())
 
-@pytest.mark.skip(reason="not implemented yet")
-def test_get_unused_css_finds_correct_number_unused_classes():
-    sut = UnusedCss("./mock/react", React())
+    style_files, _ = sut.get_unused_css()
 
-    _, count = sut.get_unused_css()
+    assert len(style_files) == 4
 
-    assert count == 2
 
-@pytest.mark.skip(reason="not implemented yet")
-def test_get_unused_css_finds_correct_number_css_classes():
-    sut = UnusedCss("./mock/react", React())
+def test_React_get_unused_css_finds_correct_number_unused_classes():
+    sut = UnusedCss("./tests/mock/react", React())
 
-    unused_classes, _ = sut.get_unused_css()
+    _, unused_classes = sut.get_unused_css()
 
-    assert len(unused_classes) == 4
+    assert unused_classes == 5
 
+
+def test_React_get_unused_css_finds_correct_number_style_files():
+    sut = UnusedCss("./tests/mock/react", React())
+
+    style_files, _ = sut.get_unused_css()
+
+    assert len(style_files) == 6

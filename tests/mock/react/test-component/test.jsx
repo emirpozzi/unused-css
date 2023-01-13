@@ -1,3 +1,3 @@
 const test = () => {
-  return <div className="test_class">foo</div>;
+  return <div className="test-class">foo</div>;
 };
