@@ -3,7 +3,6 @@ from lib.css import get_classes_in_css
 from lib.file import get_files_by_extension
 import os
 
-
 class React:
     component_extension  = ("jsx", "tsx")
   

@@ -1,14 +1,14 @@
 from fnmatch import fnmatch
 import os
 
-def get_files_by_extension(root : str, extension : str) -> tuple:
+def get_files_by_extension(folder : str, extension : str) -> tuple:
     '''
-    Finds all files with the input extension in the root folder
+    Finds all files with the input extension in the given folder
     '''
     pattern = f"*.{extension}"
     result = []
 
-    for path, _, files in os.walk(root):
+    for path, _, files in os.walk(folder):
         for name in files:
             if fnmatch(name, pattern):
                 result.append(os.path.join(path, name))
@@ -30,7 +30,7 @@ def merge_files_content(file_list : list) -> str:
     return result
 
 # TODO have a tuple with major terms from gitignore
-IGNORE_TERMS = ("/node_modules/", "/dist/", "/coverage/"  )
+IGNORE_TERMS = ("/node_modules/", "/dist/", "/coverage/")
 def is_source_file(file_name : str) -> bool:
     '''
     File is source file, not an artifact
