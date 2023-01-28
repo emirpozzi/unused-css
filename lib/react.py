@@ -7,6 +7,9 @@ import os
 class React:
     component_extension = ("jsx", "tsx")
 
+    def __str__(self) -> str:
+        return "React"
+
     def get_unused_component_css(self, style_files, files, count) -> tuple:
         """
         Given a list of the content of global style sheets/Sass module files, it returns CSS classes unused in html

@@ -35,9 +35,11 @@ def merge_files_content(file_list: tuple[str]) -> str:
 # TODO have a tuple with major terms from gitignore
 IGNORE_TERMS = ("/node_modules/", "/dist/", "/coverage/")
 
+# TODO WRITE TESTS
+
 
 def is_source_file(file_name: str) -> bool:
     '''
     File is source file, not an artifact
     '''
-    return file_name not in IGNORE_TERMS
+    return not any(term in file_name for term in IGNORE_TERMS)
