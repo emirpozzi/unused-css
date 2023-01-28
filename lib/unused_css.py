@@ -1,10 +1,12 @@
 import os
+from lib.angular import Angular
+from lib.react import React
 from lib.css import get_classes_in_css
 from lib.file import get_files_by_extension, is_source_file, merge_files_content
 
 
 class UnusedCss:
-    def __init__(self, path: str, framework):
+    def __init__(self, path: str, framework: Angular | React):
         self.path = path
         self.count = 0
         self.files = {}

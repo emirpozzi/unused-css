@@ -32,10 +32,8 @@ def merge_files_content(file_list: tuple[str]) -> str:
     return result
 
 
-# TODO have a tuple with major terms from gitignore
+# TODO expand list, put tuple in own file
 IGNORE_TERMS = ("/node_modules/", "/dist/", "/coverage/")
-
-# TODO WRITE TESTS
 
 
 def is_source_file(file_name: str) -> bool:

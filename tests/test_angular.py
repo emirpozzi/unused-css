@@ -1,8 +1,6 @@
 import pytest
 from lib.angular import Angular
 
-# TODO test other methods of Angular class
-
 
 @pytest.mark.parametrize('input',
                          ["src/components/test.component.html",
