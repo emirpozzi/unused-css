@@ -1,5 +1,6 @@
 from fnmatch import fnmatch
 import os
+from lib.ignore_terms import IGNORE_TERMS
 
 
 def get_files_by_extension(folder: str, extension: str) -> tuple:
@@ -30,10 +31,6 @@ def merge_files_content(file_list: tuple[str]) -> str:
         except Exception:
             continue
     return result
-
-
-# TODO expand list, put tuple in own file
-IGNORE_TERMS = ("/node_modules/", "/dist/", "/coverage/")
 
 
 def is_source_file(file_name: str) -> bool:
