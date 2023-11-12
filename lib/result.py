@@ -11,5 +11,5 @@ class Result:
     def __str__(self) -> str:
         if (self.count > 0):
             return CONSOLE_GREEN + f"Unused CSS classes: {self.count}"
-        else:
-            return CONSOLE_GREEN + "No unused CSS classes found"
+        
+        return CONSOLE_GREEN + "No unused CSS classes found"

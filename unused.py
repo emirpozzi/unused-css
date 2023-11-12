@@ -7,9 +7,6 @@ from lib.unused_css import UnusedCss
 
 
 def main():
-    '''
-    Get unused classes in all css/scss files
-    '''
     if len(sys.argv) > 1:
         root_path = sys.argv[1]
     else:
